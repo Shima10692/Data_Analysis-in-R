@@ -1,0 +1,100 @@
+---
+title: "Spotify R Markdown"
+author: "Shima Mojapelo"
+date: "2025-04-28"
+output: html_document
+---
+# **PHASE 1: ASK**
+
+
+# **PHASE 2: PREPARE**
+
+## Load the necessary packages and datasets into dataframes
+
+```{r, load packages}
+options(repos = "https://cran.r-project.org")
+
+install.packages("tidyverse")
+install.packages("dplyr")
+install.packages("ggplot2")
+install.packages("lubridate")
+install.packages("sqldf")
+
+library(tidyverse)
+library(dplyr)
+library(ggplot2)
+library(lubridate)
+library(sqldf)
+
+```
+
+## Load Spotify datasets into dataframes
+
+```{r, load and preview Spotify data sets}
+
+high_popularity_data <- read_csv("Spotify Data/high_popularity_spotify_data.csv") 
+head(high_popularity_data)
+
+low_popularity_data <- read_csv("Spotify Data/low_popularity_spotify_data.csv")
+head(low_popularity_data)
+
+```
+
+# **PHASE 3: PROCESSES**
+
+## Assess the data integrity
+
+On investigation the data sets seem to have been thoroughly cleaned before making it open to the public.
+
+## Combine tables for analysis
+
+```{r, Assess the data integrity}
+popularity_data <- rbind(high_popularity_data, low_popularity_data)
+head(popularity_data)
+
+```
+
+## Export new combined data
+
+```{r, Export new combined data}
+write.csv(popularity_data, "Spotify Data/Combined_Data.csv")
+
+```
+
+
+# **PHASE 4: ANALYSE**
+
+## Visualise Data
+
+<div class='tableauPlaceholder' id='viz1745854158614' style='position: relative'><noscript><a href='#'><img alt='Spotify Data Analysis ' src='https:&#47;&#47;public.tableau.com&#47;static&#47;images&#47;Sp&#47;SpotifyDataAnalysis_17458531912460&#47;Story1&#47;1_rss.png' style='border: none' /></a></noscript><object class='tableauViz'  style='display:none;'><param name='host_url' value='https%3A%2F%2Fpublic.tableau.com%2F' /> <param name='embed_code_version' value='3' /> <param name='site_root' value='' /><param name='name' value='SpotifyDataAnalysis_17458531912460&#47;Story1' /><param name='tabs' value='no' /><param name='toolbar' value='yes' /><param name='static_image' value='https:&#47;&#47;public.tableau.com&#47;static&#47;images&#47;Sp&#47;SpotifyDataAnalysis_17458531912460&#47;Story1&#47;1.png' /> <param name='animate_transition' value='yes' /><param name='display_static_image' value='yes' /><param name='display_spinner' value='yes' /><param name='display_overlay' value='yes' /><param name='display_count' value='yes' /><param name='language' value='en-US' /><param name='filter' value='publish=yes' /></object></div> 
+
+```{js, Visualise Data}
+
+var divElement = document.getElementById('viz1745854158614');                    
+ar vizElement = divElement.getElementsByTagName('object')[0];                    
+vizElement.style.width='1169px';vizElement.style.height='854px';                    
+var scriptElement = document.createElement('script');                    
+scriptElement.src = 'https://public.tableau.com/javascripts/api/viz_v1.js';                    
+vizElement.parentNode.insertBefore(scriptElement, vizElement);
+
+```
+
+# **PHASE 5: SHARE INSIGHTS**
+
+**Findings:** R&B, gaming and Metal seem to be the most popular genres
+**Recommendations:** Promote more songs in these genres
+
+**Findings:** Sabrina Carpenter, Bruno Mars, Billie Eilish, Kendrick Lamar and Linkin Park are the most popular artists on Spotify
+**Recommendations:** Promote more songs from these artists
+
+**Findings:** Songs with tempos between 155- 160 and 200 - 205 seem to be the most popular tracks
+**Recommendations:** Promote more songs that fall inot these genres
+
+**Findings:** The more danceable a song is the more popular it is
+**Recommendations:** Promote more songs with a high danceability score
+
+**Findings:** Songs with speechinesss score of between 0.6 - 0.7 or 0.8 - 0.9 seem to be the most popular
+**Recommendations:** Promote sings within these speechiness levels more
+
+**Findings:**  Songs with a loudness level between -5 and +5 dB are the most popular
+**Recommendations:** Promote songs with higher loudness levels
