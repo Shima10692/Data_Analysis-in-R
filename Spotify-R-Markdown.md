@@ -5,6 +5,8 @@ Shima Mojapelo
 
 # **PHASE 1: ASK**
 
+As a music lover I wanted to look at Spotify Data to find out what makes a good song/artist
+
 # **PHASE 2: PREPARE**
 
 ## Load the necessary packages and datasets into dataframes
